@@ -7,7 +7,7 @@ namespace RusaDrako\calendar;
 abstract class _abstract {
 
 	protected $_date = null;
-	protected $_record = [];
+	protected $_item = [];
 
 	protected $obj_calendar = null;
 
@@ -43,7 +43,7 @@ abstract class _abstract {
 	 */
 	protected function __preparationData($arr) {
 		$arr['DATE'] = $this->_date;
-		$arr['RECORDS'] = $this->_record;
+		$arr['ITEM'] = $this->_item;
 		return $arr;
 	}
 
@@ -55,8 +55,8 @@ abstract class _abstract {
 			case 'DATE':
 				return $this->_date;
 				break;
-			case 'RECORD':
-				return $this->_record;
+			case 'ITEM':
+				return $this->_item;
 				break;
 		}
 		throw new \Exception("Отсутствует свойство " . get_called_class() . "->{$name}", 1);
@@ -65,15 +65,15 @@ abstract class _abstract {
 
 
 	/** */
-	public function getArr() {
-		return $this->_record;
+	public function getItemArr() {
+		return $this->_item;
 	}
 
 
 
 	/** */
-	public function addRecord(record $record) {
-		return $this->obj_calendar->addRecord($record);
+	public function addRecord(record $item) {
+		return $this->obj_calendar->addRecord($item);
 	}
 
 
@@ -81,7 +81,7 @@ abstract class _abstract {
 	/** */
 	public function countRecord() {
 		$count = 0;
-		foreach ($this->_record as $v) {
+		foreach ($this->_item as $v) {
 			$count += $v->countRecord();
 		}
 		return $count;

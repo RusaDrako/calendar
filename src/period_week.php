@@ -30,7 +30,7 @@ class period_week extends _abstract {
 		$int_last_day = \strtotime($this->_date_f);
 		do {
 			$_date = date($this->obj_calendar->formatDate(), $int_day);
-			$this->_record[] = $this->obj_calendar->getWeek($_date);
+			$this->_item[] = $this->obj_calendar->getWeek($_date);
 			$int_day = $int_day + 7 * 24 * 60 * 60;
 		} while ($int_day <= $int_last_day);
 	}

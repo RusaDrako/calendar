@@ -40,6 +40,7 @@ class day extends _abstract {
 		switch ($name) {
 			case 'WEEKDAY':
 				$w = date('w', $this->_int_date);
+				$w = $w ? $w : 7;
 				return $w;
 				break;
 			case 'NAME':
@@ -71,9 +72,9 @@ class day extends _abstract {
 
 
 	/** */
-	public function addRecord(record $record) {
-		if ($record->DATE == $this->_date) {
-			$this->_record[] = $record;
+	public function addRecord(record $item) {
+		if ($item->DATE == $this->_date) {
+			$this->_item[] = $item;
 			return true;
 		};
 		return false;
@@ -83,7 +84,7 @@ class day extends _abstract {
 
 	/** */
 	public function countRecord() {
-		return count($this->_record);
+		return count($this->_item);
 	}
 
 

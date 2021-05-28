@@ -8,7 +8,7 @@ class record {
 
 	protected $_date = null;
 	protected $_time = null;
-	protected $_record = null;
+	protected $_data_record = null;
 
 	protected $obj_calendar = null;
 
@@ -43,7 +43,7 @@ class record {
 	protected function __preparationData($arr) {
 		$arr['DATE'] = $this->_date;
 		$arr['TIME'] = $this->_time;
-		$arr['RECORD'] = $this->_record;
+		$arr['RECORD'] = $this->_data_record;
 		return $arr;
 	}
 
@@ -59,7 +59,7 @@ class record {
 				return $this->_time;
 				break;
 			case 'RECORD':
-				return $this->_record;
+				return $this->_data_record;
 				break;
 		}
 		throw new \Exception("Отсутствует свойство " . get_called_class() . "->{$name}", 1);
@@ -68,17 +68,17 @@ class record {
 
 
 	/** */
-	public function setDate($Y, $M, $D, $H = 0, $min = 0) {
-		$int_date      = strtotime("{$Y}-{$M}-{$D} {$H}:{$min}");
+	public function setDate($Y, $M, $D, $H = 0, $min = 0, $sec = 0) {
+		$int_date      = strtotime("{$Y}-{$M}-{$D} {$H}:{$min}:{$sec}");
 		$this->_date   = date($this->obj_calendar->formatDate(), $int_date);
-		$this->_time   = date('H:i', $int_date);
+		$this->_time   = date('H:i:s', $int_date);
 	}
 
 
 
 	/** */
 	public function setRecord($data) {
-		$this->_record = $data;
+		$this->_data_record = $data;
 	}
 
 

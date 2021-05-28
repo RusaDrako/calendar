@@ -60,7 +60,7 @@ class month extends _abstract {
 		$int_day = $int_first_day - ($weekday - 1) * 24  * 60 * 60;
 		do {
 			$_date = date($this->obj_calendar->formatDate(), $int_day);
-			$this->_record[] = $this->obj_calendar->getWeek($_date);
+			$this->_item[] = $this->obj_calendar->getWeek($_date);
 			$int_day = $int_day + 7 * 24 * 60 * 60;
 		} while (date('m', $int_day) == $month);
 	}

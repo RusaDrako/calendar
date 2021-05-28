@@ -12,6 +12,3 @@ $classMap = [
 foreach ($classMap as $class => $alias) {
     class_alias($class, $alias);
 }
-
-/*interface RD_Obj_Intf_BD implements RusaDrako\\calendar\\intf_record {
-}/**/
