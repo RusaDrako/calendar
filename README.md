@@ -5,31 +5,32 @@
 
 Для подключения библиотеки к проекту подключите файл `src/autoload.php`
 
-## Доступные классы
+## Начало работы
+
+```php
+	$calendar = new \RD_Calendar();
+```
+
+## Псевдонимы классов
 
 | Псевдоним | Полное имя класса |
-| :---: | :--- |
-| RD_Calendar | RusaDrako\\calendar\\calendar |
-| RD_Calendar_Local | RusaDrako\\calendar\\localization\\_localization |
+| :--- | :--- |
+| **RD_Calendar** | RusaDrako\\calendar\\calendar |
+| **RD_Calendar_Local** | RusaDrako\\calendar\\localization\\_localization |
 
 
-## Доступные объекты
+## Используемые классы
 
-| Объект | Описание | Получение |
-| :---: | :--- | :--- |
-| `calendar` | Общие настройки календаря и его фасад | ` $calendar = new \RD_Calendar();` |
+| Класс | Описание | Получение |
+| :--- | :--- | :--- |
+| `calendar` | Класс календаря. Общие настройки. Методы формирования объектов. | ` $calendar = new \RD_Calendar();` |
 | `month` | Класс для формирования объекта месяца | `$month = $calendar->getMonth($date);` |
 | `week` | Класс для формирования объекта недели | `$week = $calendar->getWeek($date);` |
 | `day` | Класс для формирования объекта дня | `$day = $calendar->getDay($date);` |
 | `record` | Класс для формирования объекта записи | `$record = $calendar->getRecord();` |
+| `localization` | Класс локализации календаря (язык, формат) | `$local = new RD_Calendar_Local();` |
 
 - **$date** - дата, входящая в получаемый фиксированный период
-
-
-## Начало работы
-
-``` $calendar = new \RD_Calendar();```
-
 
 
 ## Локализация календаря
@@ -44,9 +45,9 @@
 
 
 
-## Объект record
+## Класс `record`
 
-Объект записи в календаре
+Класс записи в календаре
 
 | Метод | Описание |
 | :--- | :--- |
@@ -60,7 +61,7 @@
 ```
 
 
-## getItemArr()
+## Метод getItemArr()
 
 Возвращает массив подчинённых элементов объекта
 
@@ -71,11 +72,12 @@
 | month | week |
 
 ```php
+	$days = $week->getItemArr();
 	$records = $day->getItemArr();
 ```
 
 
-## addRecord(record $item)
+## Метод addRecord(record $item)
 
 Пытается добавить объект `record` в соответствующую дату в календаре (ищет совпадение по $record->DATE)
 
@@ -83,16 +85,16 @@
 
 
 ```php
-	$week->addRecord(record $item);
+	$week->addRecord(record $record);
 ```
 
 
-## countRecord()
+## Метод countRecord()
 
 Возвращает кол-во записей `record` входящие в указанный период.
 
 Метод доступен в классах `day`, `week`, `month`, `calendar`
 
 ```php
-	$count = $month->countRecord(record $item);
+	$count = $month->countRecord();
 ```
